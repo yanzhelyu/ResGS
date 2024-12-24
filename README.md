@@ -6,7 +6,7 @@ Yanzhe Lyu, Kai Cheng, Xin Kang, Xuejin Chen
 
 
 
-![teaser](assets\teaser.png)
+![teaser](C:\Users\lyuyz\Desktop\workspace\ResGS\ResGS\assets\teaser.png)
 
 This repository is the official implementation of "ResGS: Residual Densification of 3D Gaussian for Efficient Detail Recovery".
 
