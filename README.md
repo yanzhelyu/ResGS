@@ -2,7 +2,7 @@
 
 Yanzhe Lyu, Kai Cheng, Xin Kang, Xuejin Chen
 
-[[arxiv]([[2412.07494\] ResGS: Residual Densification of 3D Gaussian for Efficient Detail Recovery](https://arxiv.org/abs/2412.07494))] 
+[[`arxiv`](https://arxiv.org/abs/2412.07494)]
 
 
 
