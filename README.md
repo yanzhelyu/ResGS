@@ -5,8 +5,10 @@ Yanzhe Lyu, Kai Cheng, Xin Kang, Xuejin Chen
 [[`arxiv`](https://arxiv.org/abs/2412.07494)]
 
 
-
-![teaser](C:\Users\lyuyz\Desktop\workspace\ResGS\ResGS\assets\teaser.png)
+<p align="center">
+<img src="assets/teaser.png" width=100% height=100% 
+class="center">
+</p>
 
 This repository is the official implementation of "ResGS: Residual Densification of 3D Gaussian for Efficient Detail Recovery".
 
@@ -166,7 +168,7 @@ If you find our work helpful, please consider citing:
 
 ## Acknowledgment
 
-The released version of our method chooses [AbsGS]([AbsGS](https://ty424.github.io/AbsGS.github.io/)) as its baseline, we thank them for their work. If you want to use our code, please also cite their paper. Additionally, please cite [3D-GS](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/), as they are the original proposers of the 3D-GS framework.
+The released version of our method chooses [AbsGS](https://ty424.github.io/AbsGS.github.io/) as its baseline, we thank them for their work. If you want to use our code, please also cite their paper. Additionally, please cite [3D-GS](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/), as they are the original proposers of the 3D-GS framework.
 
 ```
 @inproceedings{Ye2024AbsGSRF,
