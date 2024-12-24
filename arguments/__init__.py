@@ -92,13 +92,12 @@ class OptimizationParams(ParamGroup):
 
         self.min_opacity = 0.005
 
-        self.base_grad_threshold = 0.00067
+        self.densify_grad_threshold = 0.00067
 
         self.change_iter = [2500, 6000]
         self.resolution_scales = [2, 1, 0]
         self.resize_to_original = False
         self.warm_up_iter=500
-        self.update_ratio=0.7
 
         self.use_opacity_reduce=True
         self.prune_until=25_000
@@ -106,7 +105,7 @@ class OptimizationParams(ParamGroup):
         
         #residual split parameters
         self.opacity_reduce_weight = 0.3
-        self.lambda_add_child_scale = 1.6
+        self.residual_split_scale_div = 1.6
         
         self.stage_hr_factor = 2.0
         self.stage_split = 3

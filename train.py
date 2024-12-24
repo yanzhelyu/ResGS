@@ -141,11 +141,7 @@ def training(dataset, opt:OptimizationParams, pipe, testing_iterations, saving_i
 
             if iteration % 10 == 0:
                 progress_bar.set_postfix({"Loss": f"{ema_loss_for_log:.{7}f}",
-                                          "GS_num":f"{gaussians.get_gs_num}",
-                                          "cur_level":f"{cur_level}",
                                           })
-                # progress_bar.set_postfix({"Loss": f"{ema_loss_for_log:.{7}f}",
-                #                           })
                 progress_bar.update(10)
             if iteration == opt.iterations:
                 progress_bar.close()
@@ -161,13 +157,11 @@ def training(dataset, opt:OptimizationParams, pipe, testing_iterations, saving_i
             # densification
             if iteration < opt.update_until and iteration > opt.start_stat and (warm_up_iter==0):
                 # add statis
-                #gaussians.add_densification_stats(viewspace_point_tensor, visibility_filter, render_pkg["radii"])
                 gaussians.add_densification_stats(viewspace_point_tensor, visibility_filter)
                 # densification
                 if is_densify_iter:
-                    #cur_extent = scene.cameras_extent * (update_value**(1.0*max_level*opt.stage_split-1.0*cur_level))
-                    gaussians.adjust_gaussian(opt.base_grad_threshold, update_value,opt.min_opacity, cur_stage=cur_level
-                                              ,opacity_reduce_weight=opt.opacity_reduce_weight, lambda_add_child_scale=opt.lambda_add_child_scale)
+                    gaussians.adjust_gaussian(opt.densify_grad_threshold, update_value,opt.min_opacity, cur_stage=cur_level
+                                              ,opacity_reduce_weight=opt.opacity_reduce_weight, residual_split_scale_div=opt.residual_split_scale_div)
 
 
             if iteration in change_iter:
@@ -296,7 +290,7 @@ if __name__ == "__main__":
     safe_state(args.quiet)
 
     # Start GUI server, configure and run training
-    #network_gui.init(args.ip, args.port)
+    network_gui.init(args.ip, args.port)
     
     torch.autograd.set_detect_anomaly(args.detect_anomaly)
     torch.cuda.set_device(args.device)

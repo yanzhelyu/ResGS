@@ -30,7 +30,7 @@ parser.add_argument("--args", type=str, default="")
 parser.add_argument("--dataset", type=str, default="")
 parser.add_argument("--eval", action="store_true")
 parser.add_argument("--save_path", type=str,default="trained/")
-parser.add_argument("--dataset_path", type=str,default="", required=True)
+parser.add_argument("--dataset_path", type=str,default="data/")
 args = parser.parse_args(sys.argv[1:])
 base_save_path=args.save_path
 base_dataset_path=args.dataset_path

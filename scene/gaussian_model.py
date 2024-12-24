@@ -461,13 +461,13 @@ class GaussianModel:
         self.max_radii2D = torch.cat([self.max_radii2D, torch.zeros((new_xyz.shape[0]), device="cuda")], dim=0)
         self.max_weight = torch.cat([self.max_weight, torch.zeros((new_xyz.shape[0], 1), device="cuda")], dim=0)
 
-    def densify_residual_split(self, selected_pts_mask, opacity_reduce_weight = 0.3, lambda_add_child_scale = 1.6):
+    def densify_residual_split(self, selected_pts_mask, opacity_reduce_weight = 0.3, residual_split_scale_div = 1.6):
         stds = self.get_scaling[selected_pts_mask]
         means =torch.zeros((stds.size(0), 3),device="cuda")
         samples = torch.normal(mean=means, std=stds)
         rots = build_rotation(self._rotation[selected_pts_mask])
         new_xyz = torch.bmm(rots, samples.unsqueeze(-1)).squeeze(-1) + self.get_xyz[selected_pts_mask]
-        new_scaling = self.scaling_inverse_activation(self.get_scaling[selected_pts_mask]/ lambda_add_child_scale)
+        new_scaling = self.scaling_inverse_activation(self.get_scaling[selected_pts_mask]/ residual_split_scale_div)
         new_rotation = self._rotation[selected_pts_mask]
         new_features_dc = self._features_dc[selected_pts_mask]
         new_features_rest = self._features_rest[selected_pts_mask]
@@ -480,7 +480,7 @@ class GaussianModel:
 
 
 
-    def adjust_gaussian(self, base_grad_threshold, update_value , min_opacity, cur_stage = 0, opacity_reduce_weight = 0.3, lambda_add_child_scale = 1.6):
+    def adjust_gaussian(self, base_grad_threshold, update_value , min_opacity, cur_stage = 0, opacity_reduce_weight = 0.3, residual_split_scale_div = 1.6):
 
         grads = self.xyz_gradient_accum_abs / self.denom
         grads[grads.isnan()] = 0
@@ -493,7 +493,7 @@ class GaussianModel:
             cur_grad_thresh[level_mask] = cur_grad_thresh[level_mask] * torch.pow(base_pow, self._level[level_mask] - cur_stage)
         add_child_mask = (grads_norm >= cur_grad_thresh)
 
-        self.densify_residual_split(add_child_mask, opacity_reduce_weight = opacity_reduce_weight, lambda_add_child_scale = lambda_add_child_scale)
+        self.densify_residual_split(add_child_mask, opacity_reduce_weight = opacity_reduce_weight, residual_split_scale_div = residual_split_scale_div)
         
         prune_pts_mask = torch.where(self.get_opacity < min_opacity, True, False)
         prune_pts_mask = prune_pts_mask.view(-1)
