@@ -75,7 +75,6 @@ def training(dataset, opt:OptimizationParams, pipe, testing_iterations, saving_i
     lpips_fn = lpips.LPIPS(net='vgg').to("cuda")
     _ = prepare_output_and_logger(dataset)
     gaussians = GaussianModel(dataset.sh_degree)
-    #max_level=len(dataset.feat_dim)
     scene = Scene(dataset, gaussians, shuffle=False, resolution_scales=opt.resolution_scales, resize_to_orig=opt.resize_to_original)
     gaussians.training_setup(opt)
     max_level = len(opt.resolution_scales)
