@@ -1,6 +1,6 @@
 # ResGS: Residual Densification of 3D Gaussian for Efficient Detail Recovery
 
-### Accepted by ICCV 2025
+### Accepted to ICCV 2025
 
 Yanzhe Lyu, Kai Cheng, Xin Kang, Xuejin Chen
 
