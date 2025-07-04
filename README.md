@@ -4,7 +4,7 @@
 
 Yanzhe Lyu, Kai Cheng, Xin Kang, Xuejin Chen
 
-[[`arxiv`](https://arxiv.org/abs/2412.07494)] [[`project page`](https://lyuyz5440.github.io/resgs.github.io/)]
+[[`arxiv`](https://arxiv.org/abs/2412.07494)] [[`project page`](https://yanzhelyu.github.io/resgs.github.io/)]
 
 
 <p align="center">
