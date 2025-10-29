@@ -158,13 +158,12 @@ where ```db_eval.txt```, ```MipNeRF_eval.txt```, ```tandt_eval.txt``` contains t
 If you find our work helpful, please consider citing:
 
 ```
-@inproceedings{Lyu2024ResGSRD,
+@inproceedings{lyu2025resgs,
   title={ResGS: Residual Densification of 3D Gaussian for Efficient Detail Recovery},
-  author={Yanzhe Lyu and Kai Cheng and Xin Kang and Xuejin Chen},
-  year={2024},
-  eprint={2412.07494},
-  archivePrefix={arXiv},
-  primaryClass={cs.CV}
+  author={Lyu, Yanzhe and Cheng, Kai and Kang, Xin and Chen, Xuejin},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={28093--28102},
+  year={2025}
 }
 ```
 
