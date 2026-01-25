@@ -20,7 +20,7 @@ To overcome the limitations of the 3D-GS densification method, we propose a nove
 
 ```
 # clone repository 
-git clone https://github.com/Lyuyz5440/ResGS.git --recursive
+git clone https://github.com/yanzhelyu/ResGS.git --recursive
 cd ResGS
 
 # create environment 
